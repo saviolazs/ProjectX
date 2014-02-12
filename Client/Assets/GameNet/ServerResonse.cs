@@ -40,8 +40,7 @@ public partial class ServerResponse
 
     public class Resopnse_1001 : ServerResponse.IResponse
     {
-        public int PageCount { set; get; }
-        public List<Item> items { set; get; }
+        public string Content { set; get; }
     }
     public class Item
     {
@@ -54,19 +53,7 @@ public partial class ServerResponse
         if (reader.StatusCode == 0)
         {
             ret = new Resopnse_1001();
-            ret.PageCount = reader.getInt();
-            int nNum = reader.getInt();
-            ret.items = new List<Item>();
-            for (int i = 0; i < nNum; i ++ )
-            {
-                reader.recordBegin();
-                Item item = new Item();
-                item.UserName = reader.readString();
-                item.Score = reader.getInt();
-                reader.recordEnd();
-				ret.items.Add(item);
-            }
-           
+            ret.Content = reader.readString();
         }
         return ret;
 

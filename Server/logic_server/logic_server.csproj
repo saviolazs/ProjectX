@@ -87,23 +87,40 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="ZyGames.Framework">
-      <HintPath>..\..\..\Release\6.1.5.5\Lib\ZyGames.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="ZyGames.Framework.Common">
-      <HintPath>..\..\..\Release\6.1.5.5\Lib\ZyGames.Framework.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ZyGames.Framework.Game">
-      <HintPath>..\..\..\Release\6.1.5.5\Lib\ZyGames.Framework.Game.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LogicServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Script\Action\Action1001.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Script\Action\ActionIDDefine.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Script\Action\BaseAction.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Script\Route.config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\workspace\Scut\Source\Framework\ZyGames.Framework.Common\ZyGames.Framework.Common.csproj">
+      <Project>{CE5C369F-8FAC-47A1-89B4-7AB09A6A3CB1}</Project>
+      <Name>ZyGames.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\Scut\Source\Framework\ZyGames.Framework\ZyGames.Framework.csproj">
+      <Project>{BD9F1C04-DE33-4C59-9942-2CD0CDB4CC3C}</Project>
+      <Name>ZyGames.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\Scut\Source\Middleware\ZyGames.Framework.Game\ZyGames.Framework.Game.csproj">
+      <Project>{DE7024B7-7168-4262-A250-6A21B932EC3B}</Project>
+      <Name>ZyGames.Framework.Game</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

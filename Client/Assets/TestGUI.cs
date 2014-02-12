@@ -14,18 +14,19 @@ public class TestGUI : MonoBehaviour {
 	}
     void httpCallback(ServerResponse.ResponseData data, object userdata)
     {
+       
         ServerResponse.Resopnse_1001 res = (ServerResponse.Resopnse_1001)data.Resonse;
-		
-		string ret = "Page " + res.PageCount;
-		for(int i = 0; i <res.items.Count; i++)
-		{
-			ServerResponse.Item item = res.items[i];
-			ret +=item.UserName;
-			ret += ",";
-			ret += item.Score;
-			ret += ":";
-		}
-        Debug.Log("value" + ret);
+        Debug.Log("httpCallback:" + res.Content);
+        //string ret = "Page " + res.PageCount;
+        //for(int i = 0; i <res.items.Count; i++)
+        //{
+        //    ServerResponse.Item item = res.items[i];
+        //    ret +=item.UserName;
+        //    ret += ",";
+        //    ret += item.Score;
+        //    ret += ":";
+        //}
+        //Debug.Log("value" + ret);
 
     }
     void OnGUI () {
@@ -51,8 +52,7 @@ public class TestGUI : MonoBehaviour {
 			Debug.Log("set url first");
 			NetWriter.SetUrl("127.0.0.1:9001");
             NetWriter writer =  NetWriter.Instance;
-            writer.writeString("PageIndex", "1");
-            writer.writeInt32("PageSize", 10);
+            writer.writeString("name", "tree");
             Net.Instance.Request(1001,httpCallback,null );
 	    }
 	    

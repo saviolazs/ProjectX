@@ -92,7 +92,10 @@ public partial class NetWriter
     
     public string url_encode(string str)
     {
-        return WWW.EscapeURL(str);
+        //Debug.LogError(str);
+        //Debug.LogError(WWW.EscapeURL(str));
+        return Uri.EscapeUriString(str);
+        //return str;
     }
 
     public static string getMd5String(byte []buf)
@@ -131,7 +134,7 @@ public partial class NetWriter
 
     public byte[] PostData()
     {
-        s_strPostData = "d=";
+        s_strPostData = "?d=";
         string str = s_strUserData + "&sign="
             + getMd5String(s_strUserData + s_md5Key);
 

@@ -132,7 +132,7 @@ namespace ClientSocket
 
         public byte[] PostData()
         {
-            s_strPostData = "d=";
+            s_strPostData = "";
             string str = s_strUserData + "&sign="
                 + getMd5String(s_strUserData + s_md5Key);
 

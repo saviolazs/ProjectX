@@ -9,7 +9,8 @@ using ZyGames.Framework.Game.Runtime;
 using ZyGames.Framework.Cache.Generic;
 using ZyGames.Framework.Game.Context;
 using ClientSocket;
-
+using ZyGames.Framework.Common.Log;
+using ZyGames.Framework.Script;
 namespace gate_server
 {
     public class GateServer : GameSocketHost
@@ -31,9 +32,10 @@ namespace gate_server
             try
             {
                 EnvironmentSetting eSetting = new EnvironmentSetting() { };
-                CacheSetting cSetting = new CacheSetting() { AutoRunEvent = true, ExpiredInterval = 600, UpdateInterval = 100};
+                CacheSetting cSetting = new CacheSetting() { AutoRunEvent = true, ExpiredInterval = 600, UpdateInterval = 100 };
                 GameEnvironment.Start(eSetting, cSetting);
-                Console.WriteLine("The server is staring...");
+                //GameEnvironment.Start(100, () => { return true; });
+                TraceLog.WriteInfo("The server is staring...");
                 ConnectLogicServer();
             }
             catch (Exception ex)
@@ -57,8 +59,7 @@ namespace gate_server
         {
             NetWriter.SetUrl("127.0.0.1:8001");
             NetWriter writer = NetWriter.Instance;
-            writer.writeString("PageIndex", "1");
-            writer.writeInt32("PageSize", 10);
+            writer.writeString("name", "1");
             Net.Instance.Request(1001, ConnLogicServerCallback, null);
         }
 

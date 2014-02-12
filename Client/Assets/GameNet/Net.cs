@@ -280,19 +280,26 @@ public class Net : MonoBehaviour, IHttpCallback
             {
                 bRet = CommonCallback(reader);
             }
-            
-            if (bRet)
+
+            try
             {
-                data = ServerResponse.Instance.GetData(reader);
-                if (package.FuncCallback != null)
+                if (bRet)
                 {
-                    ProcessBodyData(data, package.UserData, package.FuncCallback);
+                    data = ServerResponse.Instance.GetData(reader);
+                    if (package.FuncCallback != null)
+                    {
+                        ProcessBodyData(data, package.UserData, package.FuncCallback);
+                    }
+                    else
+                    {
+                        Debug.Log("poll message ");
+                    }
+
                 }
-                else
-                {
-                    Debug.Log("poll message ");
-                }
-                
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.ToString());
             }
         }
     }
